@@ -1,12 +1,14 @@
 package com.ljj.commonlibproject
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import com.ljj.commonlib.base.BaseNetActivity
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+class MainActivity : BaseNetActivity() {
+    override fun getLayoutId(): Int {
+       return  R.layout.activity_main
     }
+
+    override fun initData() {
+    }
+
 
 }
