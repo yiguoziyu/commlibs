@@ -74,4 +74,7 @@ dependencies {
     api 'com.trello.rxlifecycle2:rxlifecycle:2.2.1'
     api 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.1'
     api 'com.trello.rxlifecycle2:rxlifecycle-android-lifecycle:2.2.0'
+
+    ///侧滑回退
+    api 'me.imid.swipebacklayout.lib:library:1.1.0'
 }

@@ -43,5 +43,5 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.3.1'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'com.github.yiguoziyu:commlibs:1.2'
+    implementation 'com.github.yiguoziyu:commlibs:1.3'
 }
