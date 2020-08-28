@@ -1,3 +1,5 @@
 include ':commonlib'
 include ':app'
+include ':lannotation'
+include ':lcompiler'
 rootProject.name = "CommonlibProject"

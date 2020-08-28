@@ -1,0 +1,22 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+apply plugin: 'kotlin-kapt'
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    // 引入annotation，处理注解
+    implementation project(':lannotation')
+    // 帮助我们通过类调用的形式来生成Kt代码
+    implementation 'com.squareup:kotlinpoet:1.4.0'
+    // As-3.4.1  +  gradle-5.1.1-all + auto-service:1.0-rc4
+    implementation 'com.google.auto.service:auto-service:1.0-rc4'
+    kapt'com.google.auto.service:auto-service:1.0-rc4'
+}
+
+// java控制台输出中文乱码
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"
