@@ -12,7 +12,7 @@ import javax.lang.model.element.TypeElement
 @SupportedAnnotationTypes("com.ljj.lannotation.Persistence")//注解包名
 @AutoService(Processor::class)// 允许/支持的注解类型，让注解处理器处理
 class PersistenceProcessor : BaseProcessor() {
-    private val PACKAG_PRE_ENAME="com.ljj.lettercircel"
+    private val PACKAG_PRE_ENAME="com.ljj"
     private val PACKAGENAME = "$PACKAG_PRE_ENAME.viewmodels.persistences"
     private val mSuffix = "PersistenceViewModel"
     override fun process(set: MutableSet<out TypeElement>?, roundEnvironment: RoundEnvironment?): Boolean {
