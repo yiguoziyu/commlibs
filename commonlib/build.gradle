@@ -78,6 +78,10 @@ dependencies {
     ///侧滑回退
     api 'me.imid.swipebacklayout.lib:library:1.1.0'
 
+
+
+    //图片选择器
+    api ('com.github.LuckSiege.PictureSelector:picture_library:v2.5.3')
     api project(':lannotation')
     kapt project(':lcompiler')
 }
