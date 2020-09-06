@@ -12,14 +12,15 @@ import javax.lang.model.element.TypeElement
 @SupportedAnnotationTypes("com.ljj.lannotation.Persistence")//注解包名
 @AutoService(Processor::class)// 允许/支持的注解类型，让注解处理器处理
 class PersistenceProcessor : BaseProcessor() {
-    private val PACKAGENAME = "com.ljj.lettercircel.viewmodels.persistences"
+    private val PACKAG_PRE_ENAME="com.ljj.lettercircel"
+    private val PACKAGENAME = "$PACKAG_PRE_ENAME.viewmodels.persistences"
     private val mSuffix = "PersistenceViewModel"
     override fun process(set: MutableSet<out TypeElement>?, roundEnvironment: RoundEnvironment?): Boolean {
         //获取所有带有Persistence注解的类
         val rootEnironments = roundEnvironment?.getElementsAnnotatedWith(Persistence::class.java)
         rootEnironments?.forEach { element ->
             printMessage("=====>${element.simpleName}")
-            val mClassK = ClassName.bestGuess("com.ljj.lettercircle.model.${element.simpleName}")
+            val mClassK = ClassName.bestGuess("$PACKAG_PRE_ENAME.model.${element.simpleName}")
 
 
             val methodList = mutableListOf<FunSpec>()
@@ -30,25 +31,25 @@ class PersistenceProcessor : BaseProcessor() {
             val insetFunSpec = FunSpec.builder("insert")
                     .addModifiers(KModifier.PUBLIC)
                     .addParameter("bean", mClassK)
-                    .addCode(" ACache.get(App.getApp()).put(cacheKey, bean)")
+                    .addCode(" ACache.get(BaseApplication.application).put(cacheKey, bean)")
                     .build()
 
             //删
             val removeFunSpec = FunSpec.builder("remove")
                     .addModifiers(KModifier.PUBLIC)
-                    .addCode("ACache.get(App.getApp()).remove(cacheKey);")
+                    .addCode("ACache.get(BaseApplication.application).remove(cacheKey);")
                     .build()
 
             //改
             val updateFunSpec = FunSpec.builder("update")
                     .addModifiers(KModifier.PUBLIC)
                     .addParameter("bean", mClassK)
-                    .addCode("ACache.get(App.getApp()).put(cacheKey, bean)")
+                    .addCode("ACache.get(BaseApplication.application).put(cacheKey, bean)")
                     .build()
             //查
             val queryFunSpec = FunSpec.builder("query")
                     .addModifiers(KModifier.PUBLIC)
-                    .addCode(" val instance = ACache.get(App.getApp()).getAsObject(cacheKey)\n" +
+                    .addCode(" val instance = ACache.get(BaseApplication.application).getAsObject(cacheKey)\n" +
                             "        return if (instance == null) {\n" +
                             "            ${mClassK.simpleName}()\n" +
                             "        } else {\n" +
@@ -72,8 +73,8 @@ class PersistenceProcessor : BaseProcessor() {
 
             //创建包
             val mFile = FileSpec.builder(PACKAGENAME, "${mClassK.simpleName}$mSuffix")
-                    .addImport("com.ljj.lettercircle.util.cache", "ACache")
-                    .addImport("com.ljj.lettercircle", "App")
+                    .addImport("com.ljj.commonlib.kit.cache", "ACache")
+                    .addImport("com.ljj.commonlib.base", "BaseApplication")
                     .addType(mTargetClass)
                     .build()
 

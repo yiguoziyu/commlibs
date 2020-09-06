@@ -1,4 +1,4 @@
-package com.ljj.commonlibproject;
+package com.ljj.lettercircel.model;
 
 import com.ljj.lannotation.Persistence;
 
