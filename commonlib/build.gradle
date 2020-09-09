@@ -81,7 +81,9 @@ dependencies {
 
 
     //图片选择器
-    api ('com.github.LuckSiege.PictureSelector:picture_library:v2.5.3')
+    api ('com.github.LuckSiege.PictureSelector:picture_library:v2.5.3'){
+        exclude group: 'com.google.guava', module: 'listenablefuture'
+    }
     api project(':lannotation')
     kapt project(':lcompiler')
 }
