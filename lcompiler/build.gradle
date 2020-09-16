@@ -5,7 +5,7 @@ apply plugin: 'com.github.dcendents.android-maven'
 group = 'com.github.yiguoziyu'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     // 引入annotation，处理注解
     implementation project(':lannotation')
     // 帮助我们通过类调用的形式来生成Kt代码
