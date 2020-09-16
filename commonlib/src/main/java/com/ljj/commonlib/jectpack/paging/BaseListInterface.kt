@@ -41,7 +41,7 @@ interface BaseListInterface {
     fun <T> setMultipleData(adpater: BaseListAdpater<T>, dataList: MutableList<T>)
 
 
-    fun onRefresh()
+    fun onRefresh(enableRefresh: Boolean = true, enableLoad: Boolean = true)
 
     fun onRefreshWithAnimator()
 
